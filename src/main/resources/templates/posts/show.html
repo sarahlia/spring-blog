@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Show a post')">
 	<meta charset="UTF-8">
 	<title>Title</title>
 </head>
 <body>
+	<nav th:replace="fragments/navbar :: navbar" />
+
+	<div class="container">
+
+		<div class="card border-white" style="width: 18rem;">
+			<div class="card-body">
+				<h2>Blog post</h2>
+				<h3 th:text="${post.title}" class="card-title"></h3>
+				<p th:text="${post.body}" class="card-text"></p>
+			</div>
+		</div>
+
+		<div th:replace="fragments/footer :: footer" />
+	</div>
 
 </body>
 </html>

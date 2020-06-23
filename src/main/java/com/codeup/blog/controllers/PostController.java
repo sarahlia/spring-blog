@@ -25,9 +25,12 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String show(@PathVariable long id) {
-        return "view an individual post with the id of: " + id;
+//    @ResponseBody
+    public String show(@PathVariable long id, Model model) {
+        Post post = new Post("Wednesday, June 10, 2020", "Today we had our first half-day Wednesday and I managed to get some homework as well as house chores done.");
+        model.addAttribute("post", post);
+        return "posts/show";
+//        return "view an individual post with the id of: " + id;
     }
 
     @GetMapping("/posts/create")
