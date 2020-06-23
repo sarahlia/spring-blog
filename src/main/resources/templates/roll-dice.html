@@ -11,7 +11,7 @@
 		<h1>Roll the dice</h1>
 
 		<div>
-<!--		<div th:if="${userGuess == null}"> Nothing on the div tag can also be written as this to the left-->
+<!--		<div th:if="${userGuess == null}"> Nothing on the div tag can also be written as the code to the left-->
 			<a href="/roll-dice/1">Guess 1</a>
 			<a href="/roll-dice/2">Guess 2</a>
 			<a href="/roll-dice/3">Guess 3</a>
@@ -23,12 +23,10 @@
 		<div th:if="${userGuess}">
 <!--			The above can also be written as "${userGuess != null}"-->
 			<h3>Your guess: <span th:text="${userGuess}"></span></h3>
+			<h3>The dice # that came up: <span th:text="${diceRoll}"></span></h3>
 
-			<div th:each="roll : ${diceRolls}">
-				<h3>The dice # that came up: <span th:text="${roll}"></span></h3>
-					<h2 th:if="${roll == userGuess}">Congratulations, you win!</h2>
-					<h2 th:if="${roll != userGuess}">Sorry, you lose.</h2>
-			</div>
+			<h2 th:if="${diceRoll == userGuess}">Congratulations, you win!</h2>
+			<h2 th:if="${diceRoll != userGuess}">Sorry, you lose.</h2>
 
 		</div>
 

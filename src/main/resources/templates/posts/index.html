@@ -8,6 +8,10 @@
 	<nav th:replace="fragments/navbar :: navbar" />
 
 	<div class="container">
+		<div th:if="${noPostsFound}">
+			<h2>No blog posts were found.</h2>
+		</div>
+
 		<h2>Here are all your blog posts:</h2>
 		<div th:each="post : ${posts}">
 			<div class="card border-white" style="width: 18rem;">

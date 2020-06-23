@@ -1,6 +1,7 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Ad;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 
+@Controller
 public class AdsController {
 
     @GetMapping("/ads")
@@ -21,13 +23,15 @@ public class AdsController {
         adsList.add(new Ad("SNES", "Used"));
         model.addAttribute("noAdsFound", adsList.size() == 0);
         model.addAttribute("ads", adsList);
-        return "ads/index";
+        return "/ads/index";
     }
 
     @GetMapping("/ads/{id}")
     @ResponseBody
-    public String show(@PathVariable long id){
-        return "view an individual ad with the id of: " + id;
+    public String show(@PathVariable long id, Model model){
+        model.addAttribute("adId", id);
+        model.addAttribute("ad", new Ad("PS1", "Used"));
+        return "/ads/show";
     }
 
     @GetMapping("/ads/create")

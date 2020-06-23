@@ -19,13 +19,11 @@ public class RollDiceController {
 
     @GetMapping("/roll-dice/{n}")
     public String rollDiceGuess(@PathVariable int n, Model model) {
-        ArrayList<Integer> diceRolls = new ArrayList<>();
-
+//        ArrayList<Integer> diceRolls = new ArrayList<>();
         Random rand = new Random();
         int random = rand.nextInt((6 - 1) + 1) + 1;
-
-        diceRolls.add(random);
-        model.addAttribute("diceRolls", diceRolls);
+//        diceRolls.add(random);
+        model.addAttribute("diceRoll", random);
         model.addAttribute("userGuess", n);
         return "roll-dice";
     }
