@@ -1,25 +1,31 @@
 package com.codeup.blog.controllers;
 
+import com.codeup.blog.daos.PostsRepository;
 import com.codeup.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
 
+    private PostsRepository postsDao;
+
+    public PostController(PostsRepository postsRepository) {
+        postsDao = postsRepository;
+    }
+
     @GetMapping("/posts")
     public String index(Model model) {
-        ArrayList<Post> posts = new ArrayList<>();
-        posts.add(new Post("First post", "Hello! Today is Monday."));
-        posts.add(new Post("Second post", "Tomorrow is Tuesday and it's going to rain."));
-        model.addAttribute("posts", posts);
-        model.addAttribute("noPostsFound", posts.size() == 0); //this is optional, just to make sure to have this attribute in case it needs to be used in a logic in the view.
+//        ArrayList<Post> posts = new ArrayList<>();
+//        posts.add(new Post("First post", "Hello! Today is Monday."));
+//        posts.add(new Post("Second post", "Tomorrow is Tuesday and it's going to rain."));
+        List<Post> postsList = postsDao.findAll();
+        model.addAttribute("posts", postsList);
+        model.addAttribute("noPostsFound", postsList.size() == 0); //this is optional, just to make sure to have this attribute in case it needs to be used in a logic in the view.
         return "/posts/index";
     }
 
@@ -40,7 +46,33 @@ public class PostController {
     @PostMapping("/posts/create")
     @ResponseBody
     public String save() {
+        Post newPost = new Post("Tuesday, June 23, 2020", "We ended class an hour early today.");
+        postsDao.save(newPost);
         return "create a new post";
     }
+
+    @PutMapping("/posts/{id}/edit")
+    @ResponseBody
+    public String update(@PathVariable long id) {
+
+        //find a post (select * from posts where id = ?)
+        Post foundPost = postsDao.getOne(id);
+
+        //edit the post
+        foundPost.setTitle("Tue, June 16, 2020");
+        foundPost.setBody("It's nice to have an extra hour to do something besides work!");
+
+        //save the changes (update posts set title = ?, body = ? where id = ?)
+        postsDao.save(foundPost);
+        return "post updated.";
+    }
+
+    @DeleteMapping("/posts/{id}/delete")
+    @ResponseBody
+    public String destroy(@PathVariable long id) {
+        postsDao.deleteById(id);
+        return "post deleted.";
+    }
+
 
 }
