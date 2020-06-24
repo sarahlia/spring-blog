@@ -51,6 +51,14 @@ public class PostController {
         return "create a new post";
     }
 
+    @GetMapping("/ads/{id}/edit")
+    public String showEditForm(Model model, @PathVariable long id) {
+        //find a post
+        Post postToEdit = postsDao.getOne(id);
+        model.addAttribute("post", postToEdit);
+        return "posts/edit";
+    }
+
     @PutMapping("/posts/{id}/edit")
     @ResponseBody
     public String update(@PathVariable long id) {
