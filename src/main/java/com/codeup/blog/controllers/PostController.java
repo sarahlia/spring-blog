@@ -75,7 +75,7 @@ public class PostController {
         return "post updated.";
     }
 
-    @DeleteMapping("/posts/{id}/delete")
+    @PostMapping("/posts/{id}/delete")
     @ResponseBody
     public String destroy(@PathVariable long id) {
         postsDao.deleteById(id);

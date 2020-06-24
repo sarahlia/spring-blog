@@ -16,6 +16,10 @@
 		<button>Save changes</button>
 	</form>
 
+	<form th:action="${'/posts/' + post.id + '/delete'}" method="POST">
+		<button class="btn btn-danger"></button>
+	</form>
+
 	<div th:replace="fragments/footer :: footer" />
 </div>
 
