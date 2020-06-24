@@ -59,16 +59,16 @@ public class PostController {
         return "posts/edit";
     }
 
-    @PutMapping("/posts/{id}/edit")
+    @PostMapping("/posts/{id}/edit")
     @ResponseBody
-    public String update(@PathVariable long id) {
+    public String update(@PathVariable long id, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
 
         //find a post (select * from posts where id = ?)
         Post foundPost = postsDao.getOne(id);
 
         //edit the post
-        foundPost.setTitle("Tue, June 16, 2020");
-        foundPost.setBody("It's nice to have an extra hour to do something besides work!");
+        foundPost.setTitle(title);
+        foundPost.setBody(body);
 
         //save the changes (update posts set title = ?, body = ? where id = ?)
         postsDao.save(foundPost);

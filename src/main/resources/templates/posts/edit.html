@@ -8,7 +8,7 @@
 <nav th:replace="fragments/navbar :: navbar" />
 
 <div class="container">
-	<form th:action="${'/posts/' + post.id + '/edit'}" method="POST">
+	<form th:action="${'/posts/' + post.id + '/edit'}" th:method="POST">
 		<label for="title">Title</label>
 		<input type="text" name="title" id="title" th:value="${post.title}">
 		<label for="body">Body</label>
