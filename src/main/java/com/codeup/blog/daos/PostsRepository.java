@@ -12,4 +12,7 @@ public interface PostsRepository extends JpaRepository<Post, Long> {
     //HQL
     @Query("from Post as p where p.title like %:term% or p.body like %:term%")
     List<Post> searchByTitle(@Param("term") String term);
+
+    // SELECT * from posts where title = ? LIMIT 1;
+    Post findFirstByTitle(String title);
 }

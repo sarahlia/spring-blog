@@ -23,10 +23,15 @@ public class PostController {
 //        ArrayList<Post> posts = new ArrayList<>();
 //        posts.add(new Post("First post", "Hello! Today is Monday."));
 //        posts.add(new Post("Second post", "Tomorrow is Tuesday and it's going to rain."));
+
+        //just an example of a query method(findFirstByTitle in this case)
+        //Post firstPost = postsDao.findFirstByTitle("30");
+        //System.out.println("firstPost.getId() = " + firstPost.getId());
+
         List<Post> postsList = postsDao.findAll();
         model.addAttribute("posts", postsList);
         model.addAttribute("noPostsFound", postsList.size() == 0); //this is optional, just to make sure to have this attribute in case it needs to be used in a logic in the view.
-        return "/posts/index";
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
@@ -46,12 +51,12 @@ public class PostController {
     @PostMapping("/posts/create")
     @ResponseBody
     public String save() {
-        Post newPost = new Post("Tuesday, June 23, 2020", "We ended class an hour early today.");
+        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.");
         postsDao.save(newPost);
         return "create a new post";
     }
 
-    @GetMapping("/ads/{id}/edit")
+    @GetMapping("/posts/{id}/edit")
     public String showEditForm(Model model, @PathVariable long id) {
         //find a post
         Post postToEdit = postsDao.getOne(id);
