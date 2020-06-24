@@ -82,5 +82,12 @@ public class PostController {
         return "post deleted.";
     }
 
+    @GetMapping("/search")
+    public String searchResults(Model model, @RequestParam(name = "term") String term) {
+        List<Post> posts = postsDao.searchByTitle(term);
+        model.addAttribute("posts", posts);
+        return "posts/index";
+    }
+
 
 }
