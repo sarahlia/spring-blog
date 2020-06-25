@@ -9,20 +9,23 @@
 	<nav th:replace="fragments/navbar :: navbar" />
 
 	<div class="container">
+		<h1>Here are all your blog posts:</h1>
+
 		<div th:if="${noPostsFound}">
 			<h2>No blog posts were found.</h2>
 		</div>
 
 <!--		<div th:if="${!noPostsFound}"> this ! operator in the logic does NOT work and will break the program-->
-			<h2>Here are all your blog posts:</h2>
+		<div th:unless="${noPostsFound}">
 			<div th:each="post : ${posts}">
-				<div class="card border-white" style="width: 18rem;">
-					<div class="card-body">
-						<h3 th:text="${post.title}" class="card-title">Title</h3>
-						<p th:text="${post.body}" class="card-text">Body</p>
+					<div class="card border-white" style="width: 18rem;">
+						<div class="card-body">
+							<h3 th:text="${post.title}" class="card-title">Title</h3>
+							<p th:text="${post.body}" class="card-text">Body</p>
+						</div>
 					</div>
-				</div>
 			</div>
+		</div>
 <!--		</div>-->
 
 		<div th:replace="fragments/footer :: footer" />
