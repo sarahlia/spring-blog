@@ -7,7 +7,7 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar" />
 
-<div class="container">
+<div class="container d-flex flex-row">
 	<form class="form-inline" th:action="${'/posts/' + post.id + '/edit'}" th:method="POST">
 		<label class="sr-only" for="inlineFormInputName2">Title</label>
 		<input type="text" name="title" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" th:value="${post.title}">
@@ -16,11 +16,15 @@
 		<input type="text" name="body" class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" th:value="${post.body}">
 
 		<button type="submit" class="btn btn-primary mb-2 mr-2">Update post</button>
+	</form>
+
+	<form th:action="${'/posts/' + post.id + '/delete'}" th:method="POST">
 		<button type="submit" class="btn btn-danger mb-2">Delete</button>
 	</form>
 
-	<div th:replace="fragments/footer :: footer" />
 </div>
+
+<div th:replace="fragments/footer :: footer" />
 
 </body>
 </html>
