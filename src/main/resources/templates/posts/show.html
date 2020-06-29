@@ -16,6 +16,7 @@
 				<p th:text="${post.body}" class="card-text">Body</p>
 <!--				<p th:text="${postId}" class="card-text"></p> This may be used some time in the future...-->
 				<p th:text="'Posted by: ' + ${post.user.username}" class="card-text">Username</p>
+				<p th:text="'Email: ' + ${post.user.email}" class="card-text">User's email</p>
 
 			</div>
 		</div>
