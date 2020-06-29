@@ -36,7 +36,7 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model model) {
-        Post post = new Post("Wednesday, June 10, 2020", "Today we had our first half-day Wednesday and I managed to get some homework as well as house chores done.");
+        Post post = new Post("Wednesday, June 10, 2020", "Today we had our first half-day Wednesday and I managed to get some homework as well as house chores done.", null);
         model.addAttribute("post", post);
         model.addAttribute("postId", id); //this is optional, just to have this attribute in case it needs to be used in the view at some point.
         return "/posts/show";
@@ -51,7 +51,7 @@ public class PostController {
     @PostMapping("/posts/create")
     @ResponseBody
     public String save() {
-        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.");
+        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.", null);
         postsDao.save(newPost);
         return "create a new post";
     }

@@ -10,11 +10,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
-    private String email;
-
     @Column(nullable = false, length = 50)
     private String username;
+
+    @Column(nullable = false, length = 100)
+    private String email;
 
     @Column(nullable = false)
     private String password;
@@ -22,16 +22,16 @@ public class User {
     public User() {
     }
 
-    public User(String email, String username, String password) {
-        this.email = email;
+    public User(String username, String email, String password) {
         this.username = username;
+        this.email = email;
         this.password = password;
     }
 
-    public User(long id, String email, String username, String password) {
+    public User(long id, String username, String email, String password) {
         this.id = id;
-        this.email = email;
         this.username = username;
+        this.email = email;
         this.password = password;
     }
 
@@ -43,6 +43,14 @@ public class User {
         this.id = id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -51,13 +59,6 @@ public class User {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getPassword() {
         return password;
