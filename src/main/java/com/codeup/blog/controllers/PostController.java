@@ -56,7 +56,7 @@ public class PostController {
     @ResponseBody
     public String save() {
         User currentUser = usersDao.getOne(1L);
-        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.", currentUser);
+        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.", currentUser, null);
         postsDao.save(newPost);
         return "create a new post";
     }
