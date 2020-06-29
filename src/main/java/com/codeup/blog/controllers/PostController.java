@@ -1,7 +1,9 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.daos.PostsRepository;
+import com.codeup.blog.daos.UsersRepository;
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.List;
 public class PostController {
 
     private PostsRepository postsDao;
+    private UsersRepository usersDao;
 
-    public PostController(PostsRepository postsRepository) {
+    public PostController(PostsRepository postsRepository, UsersRepository usersRepository) {
         postsDao = postsRepository;
+        usersDao = usersRepository;
     }
 
     @GetMapping("/posts")
@@ -36,7 +40,7 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model model) {
-        Post post = new Post("Wednesday, June 10, 2020", "Today we had our first half-day Wednesday and I managed to get some homework as well as house chores done.", null);
+        Post post = postsDao.getOne(id);
         model.addAttribute("post", post);
         model.addAttribute("postId", id); //this is optional, just to have this attribute in case it needs to be used in the view at some point.
         return "/posts/show";
@@ -51,7 +55,8 @@ public class PostController {
     @PostMapping("/posts/create")
     @ResponseBody
     public String save() {
-        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.", null);
+        User currentUser = usersDao.getOne(1L);
+        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.", currentUser);
         postsDao.save(newPost);
         return "create a new post";
     }

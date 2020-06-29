@@ -12,9 +12,11 @@
 		<div class="card border-white" style="width: 18rem;">
 			<div class="card-body">
 				<h2>Blog post</h2>
-				<h3 th:text="${post.title}" class="card-title"></h3>
-				<p th:text="${post.body}" class="card-text"></p>
+				<h3 th:text="${post.title}" class="card-title">Title</h3>
+				<p th:text="${post.body}" class="card-text">Body</p>
 <!--				<p th:text="${postId}" class="card-text"></p> This may be used some time in the future...-->
+				<p th:text="'Posted by: ' + ${post.user.username}" class="card-text">Username</p>
+
 			</div>
 		</div>
 
