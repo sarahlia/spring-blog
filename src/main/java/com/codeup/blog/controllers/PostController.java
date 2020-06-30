@@ -53,12 +53,11 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String save() {
+    public String save(@ModelAttribute Post postToBeSaved) {
         User currentUser = usersDao.getOne(1L);
-        Post newPost = new Post("Friday, June 26, 2020", "No class on this day.", currentUser, null);
-        postsDao.save(newPost);
-        return "create a new post";
+        postToBeSaved.setUser(currentUser);
+        Post savedPost = postsDao.save(postToBeSaved);
+        return "redirect:/posts/" + savedPost.getId(); //if we just want to redirect it to the /posts page, no need to concatenate with savedPost.getId()
     }
 
     @GetMapping("/posts/{id}/edit")
