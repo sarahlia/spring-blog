@@ -9,13 +9,7 @@
 
 <div class="container d-flex flex-row">
 	<form class="form-inline" th:action="${'/posts/' + post.id + '/edit'}" th:method="POST" th:object="${post}">
-		<label for="inlineFormInputName2">Title</label>
-		<input type="text" name="title" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" th:field="*{title}">
-
-		<label for="inlineFormInputName3">Body</label>
-		<input type="text" name="body" class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" th:field="*{body}">
-
-		<button type="submit" class="btn btn-primary mb-2 mr-2">Update post</button>
+		<form th:replace="fragments/form :: form('Update')" />
 	</form>
 
 	<form th:action="${'/posts/' + post.id + '/delete'}" th:method="POST">
