@@ -19,7 +19,7 @@
 				<li sec:authorize="!isAuthenticated()" class="nav-item">
 					<a class="nav-link" href="/login">Login</a>
 				</li>
-				<form th:action="@{/logout}" th:method="POST" class="form-inline">
+				<form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST" class="form-inline">
 					<button class="btn btn-link my-2 my-sm-0" type="submit">Logout</button>
 				</form>
 
