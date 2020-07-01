@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
 	<title>Navbar Title</title>
@@ -16,7 +16,7 @@
 					<input class="form-control mr-sm-2" name="term" type="text" placeholder="Search term" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
-				<li class="nav-item">
+				<li sec:authorize="!isAuthenticated()" class="nav-item">
 					<a class="nav-link" href="/login">Login</a>
 				</li>
 				<li class="nav-item">

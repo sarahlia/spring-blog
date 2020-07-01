@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('Index')">
 	<meta charset="UTF-8">
 	<title>Title</title>
@@ -9,7 +9,12 @@
 	<nav th:replace="fragments/navbar :: navbar" />
 
 	<div class="container">
-		<h1>Here are all your blog posts:</h1>
+		<div sec:authorize="isAuthenticated()">
+			<h1>Welcome, <span th:text="${#authentication.principal.username}" />! </h1>
+			<p>Your email is: <span th:text="${#authentication.principal.email}" /></p>
+		</div>
+		<br>
+		<h2>Here are all your blog posts:</h2>
 
 		<div th:if="${noPostsFound}">
 			<h2>No blog posts were found.</h2>
