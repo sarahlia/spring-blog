@@ -90,7 +90,7 @@ public class PostController {
 
     @GetMapping("/search")
     public String searchResults(Model model, @RequestParam(name = "term") String term) {
-        List<Post> posts = postsDao.searchByTitle(term);
+        List<Post> posts = postsDao.searchByTitleOrBody(term);
         model.addAttribute("posts", posts);
         return "posts/index";
     }
