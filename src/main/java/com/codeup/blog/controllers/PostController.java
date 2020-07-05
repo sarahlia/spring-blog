@@ -47,7 +47,7 @@ public class PostController {
         Post post = postsDao.getOne(id);
         model.addAttribute("post", post);
         model.addAttribute("postId", id); //this is optional, just to have this attribute in case it needs to be used in the view at some point.
-        return "/posts/show";
+        return "posts/show";
     }
 
     @GetMapping("/posts/create")
