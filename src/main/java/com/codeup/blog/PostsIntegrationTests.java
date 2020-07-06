@@ -2,6 +2,7 @@ package com.codeup.blog;
 
 import com.codeup.blog.daos.PostsRepository;
 import com.codeup.blog.daos.UsersRepository;
+import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,11 +18,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import javax.servlet.http.HttpSession;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BlogApplication.class)
@@ -90,5 +92,30 @@ public class PostsIntegrationTests {
                         .param("title", "testTitle")
                         .param("body", "testBody"))
                 .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    public void testShowPost() throws Exception {
+
+        Post existingPost = postsDao.findAll().get(0);
+
+        // Makes a GET request to /posts/{id} and expect a redirection to the Post show page
+        this.mvc.perform(get("/posts/" + existingPost.getId()))
+                .andExpect(status().isOk())
+                // Test the dynamic content of the page
+                .andExpect(content().string(containsString(existingPost.getTitle()))); //.getBody won't work for the first item as there's an apostrophe.
+    }
+
+    @Test
+    public void testPostsIndex() throws Exception {
+        Post existingPost = postsDao.findAll().get(0);
+
+        // Makes a GET request to /posts and verifies that we get some of the static text of the posts/index.html template and at least the title from the first post is present in the template.
+        this.mvc.perform(get("/posts"))
+                .andExpect(status().isOk())
+                // Test the static content of the page
+                .andExpect(content().string(containsString("Here are all")))
+                // Test the dynamic content of the page
+                .andExpect(content().string(containsString(existingPost.getTitle())));
     }
 }
