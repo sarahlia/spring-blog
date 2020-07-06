@@ -27,6 +27,9 @@
 						<div class="card-body">
 							<h3 th:text="${post.title}" class="card-title">Title</h3>
 							<p th:text="${post.body}" class="card-text">Body</p>
+							<form th:action="${'/posts/' + post.id}" th:method="GET">
+								<button type="submit" class="btn btn-primary mb-2 mr-2">View</button>
+							</form>
 						</div>
 					</div>
 			</div>
