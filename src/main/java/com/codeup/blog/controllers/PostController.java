@@ -5,11 +5,14 @@ import com.codeup.blog.daos.UsersRepository;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
 import com.codeup.blog.services.EmailService;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Security;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +41,20 @@ public class PostController {
 
         List<Post> postsList = postsDao.findAll();
         model.addAttribute("posts", postsList);
+
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        for(Post post : postsList) {
+//            System.out.println(post.getUser());
+//            System.out.println(post.getUser().getUsername());
+//            System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal() );
+//            if(post.getUser() == currentUser) {
+//                model.addAttribute("isCreator", post.getUser() == currentUser );
+//            }
+//        }
+//        model.addAttribute("isCreator", currentUser.equals(post.getUser());
+
         model.addAttribute("noPostsFound", postsList.size() == 0); //this is optional, just to make sure to have this attribute in case it needs to be used in a logic in the view.
+
         return "posts/index";
     }
 

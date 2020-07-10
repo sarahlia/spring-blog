@@ -20,7 +20,9 @@
 <!--				<p th:text="${postId}" class="card-text"></p> This may be used some time in the future...-->
 				<p th:text="'Posted by: ' + ${post.user.username}" class="card-text">Username</p>
 				<p th:text="'Email: ' + ${post.user.email}" class="card-text">User's email</p>
-
+				<form th:action="${'/posts/' + post.id + '/edit'}" th:method="GET">
+					<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
+				</form>
 			</div>
 		</div>
 

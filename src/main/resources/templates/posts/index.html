@@ -12,6 +12,9 @@
 		<div sec:authorize="isAuthenticated()">
 			<h1>Welcome, <span th:text="${#authentication.principal.username}" />! </h1>
 			<p>Your email is: <span th:text="${#authentication.principal.email}" /></p>
+<!--			<div th:if="${#authentication.principal.username} == post.user.username">-->
+<!--				<h3 th:text="${post.title}" class="card-title">Title</h3>-->
+<!--			</div>-->
 		</div>
 		<br>
 		<h2>Here are all the blog posts:</h2>
@@ -22,16 +25,20 @@
 
 <!--		<div th:if="${!noPostsFound}"> this ! operator in the logic does NOT work and will break the program-->
 		<div th:unless="${noPostsFound}">
+<!--		<div th:if="${isCreator}">-->
 			<div th:each="post : ${posts}">
-					<div class="card border-white" style="width: 18rem;">
-						<div class="card-body">
-							<h3 th:text="${post.title}" class="card-title">Title</h3>
-							<p th:text="${post.body}" class="card-text">Body</p>
-							<form th:action="${'/posts/' + post.id}" th:method="GET">
-								<button type="submit" class="btn btn-primary mb-2 mr-2">View</button>
-							</form>
-						</div>
+<!--				<div th:if="${isCreator}">-->
+				<div class="card border-white" style="width: 18rem;">
+					<div class="card-body">
+						<h3 th:text="${post.title}" class="card-title">Title</h3>
+						<p th:text="${post.body}" class="card-text">Body</p>
+						<p>Posted by: <span th:text="${post.user.username}" /></p>
+						<form th:action="${'/posts/' + post.id}" th:method="GET">
+							<button type="submit" class="btn btn-primary mb-2 mr-2">View</button>
+						</form>
 					</div>
+				</div>
+<!--				</div>-->
 			</div>
 		</div>
 <!--		</div>-->
