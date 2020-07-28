@@ -1,1 +1,1 @@
-https://sarahnainggolan.xyz
+https://sarahnainggolan.xyz/posts
