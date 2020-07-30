@@ -77,7 +77,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeSaved.setUser(currentUser);
         Post savedPost = postsDao.save(postToBeSaved);
-        emailService.prepareAndSend(savedPost, "A new post has been created.", "A new post has been created with the id of " + savedPost.getId());
+//        emailService.prepareAndSend(savedPost, "A new post has been created.", "A new post has been created with the id of " + savedPost.getId());
         return "redirect:/posts/" + savedPost.getId(); //if we just want to redirect it to the /posts page, no need to concatenate with savedPost.getId()
     }
 

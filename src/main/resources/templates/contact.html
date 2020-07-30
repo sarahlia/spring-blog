@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Comments</title>
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<!-- Contact-->
+	<section class="page-section" id="contact">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Send me your comments</h2>
+			</div>
+			<form th:action="@{/contact}" th:method="POST" th:object="${contact}" id="contactForm" name="sentMessage" novalidate="novalidate">
+				<div class="row align-items-stretch mb-5">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input th:field="*{name}" class="form-control" id="name" type="text" placeholder="Name *" required="required" data-validation-required-message="Please enter your name." />
+							<p class="help-block text-danger"></p>
+						</div>
+						<div class="form-group">
+							<input th:field="*{email}" class="form-control" id="email" type="email" placeholder="Email *" required="required" data-validation-required-message="Please enter your email address." />
+							<p class="help-block text-danger"></p>
+						</div>
+						<div class="form-group mb-md-0">
+							<input th:field="*{blog}" class="form-control" id="blog" type="text" placeholder="Blog " />
+							<p class="help-block text-danger"></p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group form-group-textarea mb-md-0">
+							<textarea th:field="*{comments}" class="form-control" id="comments" placeholder="Comments *" required="required" data-validation-required-message="Please enter your comments."></textarea>
+							<p class="help-block text-danger"></p>
+						</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<div id="success"></div>
+					<button class="btn btn-primary btn-xl text-uppercase" id="sendCommentsButton" type="submit">Send Comments</button>
+				</div>
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>
