@@ -1,3 +1,3 @@
-# [sarahnainggolan.xyz/posts](https://sarahnainggolan.xyz/posts)
+# [sarahnainggolan.xyz](https://sarahnainggolan.xyz)
 
 My Spring blog
