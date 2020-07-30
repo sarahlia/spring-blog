@@ -2419,11 +2419,6 @@ textarea.form-control {
     }
 }
 
-#enter-button {
-    /*opacity: 0;*/
-    /*border: none;*/
-}
-
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -2474,6 +2469,18 @@ fieldset:disabled a.btn {
 }
 
 #enter-button:hover {
+    color: chocolate;
+    background-color: transparent;
+}
+
+#sm-enter-button {
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+}
+
+#sm-enter-button:hover {
     color: chocolate;
     background-color: transparent;
 }
@@ -9857,6 +9864,7 @@ header.masthead {
     background-position: center center;
     background-size: cover;
 }
+
 header.masthead .masthead-subheading {
     font-size: 3.5rem;
     font-style: italic;
@@ -9871,6 +9879,14 @@ header.masthead .masthead-heading {
     line-height: 3.25rem;
     margin-bottom: 2rem;
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@media (min-width: 576px) {
+    .masthead-small {
+        color: black;
+        font-family: 'Dancing Script', cursive;
+        font-size: 3rem;
+    }
 }
 
 @media (min-width: 768px) {

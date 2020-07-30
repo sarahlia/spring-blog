@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Agency - Start Bootstrap Theme</title>
+	<title>Welcome to Sarah's Blog!</title>
 	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 	<!-- Font Awesome icons-->
 	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -22,14 +22,17 @@
 <!-- Masthead-->
 <header class="masthead">
 	<div class="container">
-		<div class="masthead-subheading mb-0">Welcome To Sarah's Blog!</div>
-		<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pt-0 pb-0" id="enter-button" href="/posts">E n t e r</a>
+		<div class="masthead-subheading d-none d-lg-block mb-0">Welcome To Sarah's Blog!</div>
+		<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pt-0 pb-0 d-none d-lg-block" id="enter-button" href="/posts">E n t e r</a>
 	</div>
 </header>
 	<br>
 	<br>
+<div class="container">
+	<div class="masthead-small d-none d-sm-block d-md-none mb-0 text-center">Welcome To Sarah's Blog!</div>
+	<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pt-0 pb-0 d-none d-sm-block d-md-none" id="sm-enter-button" href="/posts">E n t e r</a>
 	<a th:href="${'/contact'}" class="comments-link d-flex justify-content-center mt-4 mb-5">Send Comments</a>
-
+</div>
 
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
