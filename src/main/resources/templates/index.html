@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
@@ -28,9 +29,9 @@
 </header>
 	<br>
 	<br>
-<div class="container">
-	<div class="masthead-small d-none d-sm-block d-md-none mb-0 text-center">Welcome To Sarah's Blog!</div>
-	<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pt-0 pb-0 d-none d-sm-block d-md-none" id="sm-enter-button" href="/posts">E n t e r</a>
+<div class="bottom">
+	<div class="masthead-small mb-0 text-center d-block d-sm-block d-md-none">Welcome To Sarah's Blog!</div>
+	<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pt-0 pb-0 d-flex justify-content-center d-none d-sm-block d-md-none" id="sm-enter-button" href="/posts">E n t e r</a>
 	<a th:href="${'/contact'}" class="comments-link d-flex justify-content-center mt-4 mb-5">Send Comments</a>
 </div>
 
