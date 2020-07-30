@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
-    public String index() {
-        return "posts/index";
-    }
+//    @GetMapping("/")
+//    public String index() {
+//        return "posts/index";
+//    }
 
     @GetMapping("/home")
     public String homepage() {

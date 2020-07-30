@@ -30,7 +30,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String index(Model model) {
+    public String postsIndex(Model model) {
 //        ArrayList<Post> posts = new ArrayList<>();
 //        posts.add(new Post("First post", "Hello! Today is Monday."));
 //        posts.add(new Post("Second post", "Tomorrow is Tuesday and it's going to rain."));
