@@ -81,6 +81,15 @@ p {
     margin-bottom: 1rem;
 }
 
+/*#message {*/
+/*    height: 150px;*/
+/*    padding-top: 0;*/
+/*    padding-bottom: 0;*/
+/*    margin-top: 0;*/
+/*    border-top: 0;*/
+/*    border-bottom-width: 0;*/
+/*}*/
+
 abbr[title],
 abbr[data-original-title] {
     text-decoration: underline;
@@ -10437,13 +10446,13 @@ header.masthead .masthead-heading {
 }
 
 section#contact {
-    background-color: #212529;
+    background-color: gainsboro;
     background-image: url("../assets/img/map-image.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 section#contact .section-heading {
-    color: #fff;
+    color: rosybrown;
 }
 section#contact form#contactForm .form-group {
     margin-bottom: 1.5rem;
