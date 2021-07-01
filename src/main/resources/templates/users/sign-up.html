@@ -5,18 +5,22 @@
 	<title>Sign up</title>
 </head>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-	<label for="username">Username</label>
-	<input id="username" th:field="*{username}" />
+<div class="container-fluid">
+	<h1>Create an account</h1>
+	<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input id="username" th:field="*{username}" class="form-control" />
 
-	<label for="email">Email</label>
-	<input id="email" th:field="*{email}" />
+			<label for="email">Email</label>
+			<input id="email" th:field="*{email}" class="form-control" />
 
-	<label for="password">Password</label>
-	<input id="password" type="password" th:field="*{password}" />
+			<label for="password">Password</label>
+			<input id="password" type="password" th:field="*{password}" class="form-control" />
 
-	<input value="Sign me up!" type="submit" />
-</form>
+			<input value="Sign me up!" type="submit" />
+		</div>
+	</form>
+</div>
 </body>
 </html>

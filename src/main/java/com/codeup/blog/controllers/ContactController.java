@@ -25,7 +25,7 @@ public class ContactController {
 
     @PostMapping("/contact")
     public String submitContactForm(@ModelAttribute Contact contactToBeSaved) {
-        emailService.prepareAndSend(contactToBeSaved, "Thanks for visiting Sarah's Blog", "Thanks for sending me your comments. I'll be in touch with you soon!");
+        emailService.prepareAndSend(contactToBeSaved, "Thanks for visiting My Blog", "Thanks for sending me your comments. I'll be in touch with you soon!");
         return "contact-done";
     }
 }

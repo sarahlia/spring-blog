@@ -15,7 +15,7 @@ public class EmailService {
     @Autowired
     public JavaMailSender emailSender;
 
-    @Value("sarahlia@me.com")
+    @Value("administrator@local.org")
     private String from;
 
     public void prepareAndSend(Contact contact, String subject, String body) {

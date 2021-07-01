@@ -5,20 +5,26 @@
 	<title>Log In</title>
 </head>
 <body>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-	Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-	You have been logged out.
-</div>
+<div class="container-fluid">
+	<h1>Log In</h1>
+	<div th:if="${param.error}">
+		Invalid Username and Password. Please try again.
+	</div>
+	<div th:if="${param.logout}">
+		You have been logged out.
+	</div>
 
-<form th:action="@{/login}" th:method="post">
-	<label for="username">Username</label>
-	<input id="username" name="username" type="text" />
-	<label for="password">Password</label>
-	<input id="password" name="password" type="password" />
-	<input type="submit" value="Log In" />
-</form>
+	<form th:action="@{/login}" th:method="post">
+		<div class="form-group mt-2">
+			<label for="username">Username</label>
+			<input id="username" name="username" type="text" class="form-control" />
+			<label for="password">Password</label>
+			<input id="password" name="password" type="password" class="form-control" />
+			<input type="submit" value="Log In" />
+		</div>
+	</form>
+
+	<div><a class="back-to-blog" href="/posts">Back to My Blog</a></div>
+</div>
 </body>
 </html>
